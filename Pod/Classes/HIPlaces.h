@@ -13,6 +13,8 @@
 // Data model
 #import "HIPlaceAutocompleteRequest.h"
 #import "HIPlaceAutocompleteResult.h"
+#import "HIPlaceDetailsRequest.h"
+#import "HIPlaceDetailsResult.h"
 
 // Others
 #import "HIPlacesConstants.h"

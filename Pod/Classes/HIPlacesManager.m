@@ -50,35 +50,21 @@
     NSString *requestURLString = [self placeAutocompleteRequestURLStringFromRequest:request];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:requestURLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSError *serializationError = nil;
         NSDictionary *responseDictionary = (NSDictionary *)responseObject;
         
-        // NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject
-        //                                                                   options:kNilOptions
-        //                                                                      error:&serializationError];
-        if (!serializationError) {
-            if ([self statusCodeForResponse:responseDictionary] == HIGoogleStatusCodeOK) {
-                NSArray *placeAutocompleteResults = [self placeAutocompleteResultsForResponse:responseDictionary];
-                if ([self.delegate respondsToSelector:@selector(placesManager:didSearchForPlaceAutocompleteResults:)]) {
-                    [self.delegate placesManager:self didSearchForPlaceAutocompleteResults:placeAutocompleteResults];
-                }
-            } else {
-                if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceAutocompleteResultsDidFailWithError:)]) {
-                    NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
-                                                                      code:[self placesErrorForGoogleStatusCode:[self statusCodeForResponse:responseDictionary]]
-                                                                  userInfo:nil];
-                    [self.delegate placesManager:self searchForPlaceAutocompleteResultsDidFailWithError:placesManagerError];
-                }
+        if ([self statusCodeForResponse:responseDictionary] == HIGoogleStatusCodeOK) {
+            NSArray *placeAutocompleteResults = [self placeAutocompleteResultsForResponse:responseDictionary];
+            if ([self.delegate respondsToSelector:@selector(placesManager:didSearchForPlaceAutocompleteResults:)]) {
+                [self.delegate placesManager:self didSearchForPlaceAutocompleteResults:placeAutocompleteResults];
             }
         } else {
             if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceAutocompleteResultsDidFailWithError:)]) {
                 NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
-                                                                  code:HIPlacesErrorInvalidJSON
+                                                                  code:[self placesErrorForGoogleStatusCode:[self statusCodeForResponse:responseDictionary]]
                                                               userInfo:nil];
                 [self.delegate placesManager:self searchForPlaceAutocompleteResultsDidFailWithError:placesManagerError];
             }
         }
-
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceAutocompleteResultsDidFailWithError:)]) {
             NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
@@ -111,33 +97,21 @@
     NSString *requestURLString = [self placeDetailsRequestURLStringFromRequest:request];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:requestURLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSError *serializationError = nil;
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject
-                                                                           options:kNilOptions
-                                                                             error:&serializationError];
-        if (!serializationError) {
-            if ([self statusCodeForResponse:responseDictionary] == HIGoogleStatusCodeOK) {
-                HIPlaceDetailsResult *placeDetailsResult = [self placeDetailsResultForResponse:responseDictionary];
-                if ([self.delegate respondsToSelector:@selector(placesManager:didSearchForPlaceDetailsResult:)]) {
-                    [self.delegate placesManager:self didSearchForPlaceDetailsResult:placeDetailsResult];
-                }
-            } else {
-                if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceDetailsResultDidFailWithError:)]) {
-                    NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
-                                                                      code:[self placesErrorForGoogleStatusCode:[self statusCodeForResponse:responseDictionary]]
-                                                                  userInfo:nil];
-                    [self.delegate placesManager:self searchForPlaceDetailsResultDidFailWithError:placesManagerError];
-                }
+        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+        
+        if ([self statusCodeForResponse:responseDictionary] == HIGoogleStatusCodeOK) {
+            HIPlaceDetailsResult *placeDetailsResult = [self placeDetailsResultForResponse:responseDictionary];
+            if ([self.delegate respondsToSelector:@selector(placesManager:didSearchForPlaceDetailsResult:)]) {
+                [self.delegate placesManager:self didSearchForPlaceDetailsResult:placeDetailsResult];
             }
         } else {
             if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceDetailsResultDidFailWithError:)]) {
                 NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
-                                                                  code:HIPlacesErrorInvalidJSON
+                                                                  code:[self placesErrorForGoogleStatusCode:[self statusCodeForResponse:responseDictionary]]
                                                               userInfo:nil];
                 [self.delegate placesManager:self searchForPlaceDetailsResultDidFailWithError:placesManagerError];
             }
         }
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         if ([self.delegate respondsToSelector:@selector(placesManager:searchForPlaceAutocompleteResultsDidFailWithError:)]) {
             NSError *placesManagerError = [NSError errorWithDomain:HIPlacesErrorDomain
