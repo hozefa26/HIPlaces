@@ -26,10 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    /*
-    _placeAutocompleteSearchDisplayController.searchResultsDataSource = self;
-    [_placeAutocompleteSearchDisplayController.searchResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PlaceAutocompleteResultCell"];
-     */
     
     _placesManager = [[HIPlacesManager alloc] init];
     _placesManager.delegate = self;
@@ -89,7 +85,14 @@
 
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceAutocompleteResultsDidFailWithError:(NSError *)error
 {
-    
+    NSString *errorCode = [NSString stringWithFormat:@"Error Code: %ld", (long)error.code];
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:errorCode
+                              message:nil
+                              delegate:nil
+                              cancelButtonTitle:@"OK"
+                              otherButtonTitles:nil];
+    [alertView show];
 }
 
 /*
