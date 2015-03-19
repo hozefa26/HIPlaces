@@ -51,9 +51,11 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:requestURLString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSError *serializationError = nil;
-        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject
-                                                                           options:kNilOptions
-                                                                             error:&serializationError];
+        NSDictionary *responseDictionary = (NSDictionary *)responseObject;
+        
+        // NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject
+        //                                                                   options:kNilOptions
+        //                                                                      error:&serializationError];
         if (!serializationError) {
             if ([self statusCodeForResponse:responseDictionary] == HIGoogleStatusCodeOK) {
                 NSArray *placeAutocompleteResults = [self placeAutocompleteResultsForResponse:responseDictionary];
@@ -152,6 +154,8 @@
 {
     NSMutableString *requestURLString = [NSMutableString stringWithString:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?"];
     
+    request.input = [request.input stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
     [requestURLString appendFormat:@"key=%@&input=%@", request.key, request.input];
     
     if (request.offset != NSNotFound) {

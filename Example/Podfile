@@ -1,8 +1,0 @@
-source 'https://github.com/CocoaPods/Specs.git'
-
-
-target 'HIPlaces', :exclusive => true do
-  pod "HIPlaces", :path => "../"
-
-  
-end

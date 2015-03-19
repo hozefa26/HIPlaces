@@ -191,6 +191,13 @@
     XCTAssertTrue([[_placesManager placeAutocompleteRequestURLStringFromRequest:_fakePlaceAutocompleteRequest] isEqualToString:expectedURLString], @"URL should include input & key");
 }
 
+- (void)testThatSpaceInInputIsReplacedWithPercent
+{
+    _fakePlaceAutocompleteRequest.input = @"Fake Input";
+    NSString *expectedURLString = @"https://maps.googleapis.com/maps/api/place/autocomplete/json?key=FakeKey&input=Fake%20Input";
+    XCTAssertTrue([[_placesManager placeAutocompleteRequestURLStringFromRequest:_fakePlaceAutocompleteRequest] isEqualToString:expectedURLString], @"Space should be replaced with percent");
+}
+
 - (void)testThatOffsetIsIncludedInTheRequestURLString
 {
     _fakePlaceAutocompleteRequest.offset = 123;

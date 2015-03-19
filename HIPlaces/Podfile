@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'HIPlacesExample', :exclusive => true do
+    pod "HIPlaces", :path => "../"
+end
+
+target 'HIPlacesTests', :exclusive => true do
+  pod "HIPlaces", :path => "../"
+end

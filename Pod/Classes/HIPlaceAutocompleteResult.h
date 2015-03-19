@@ -15,6 +15,5 @@
 @property (readonly) NSArray *placeTypes;
 
 - (id)initWithPlaceAutocompleteAttributes:(NSDictionary *)placeAutocompleteAttributes;
-// - (id)initWithPlaceDescription:(NSString *)placeDescrption placeId:(NSString *)placeId placeTypes:(NSArray *)placeTypes;
 
 @end

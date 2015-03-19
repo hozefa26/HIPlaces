@@ -13,6 +13,8 @@
 
 @protocol HIPlacesManagerDelegate <NSObject>
 
+@optional
+
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceAutocompleteResultsDidFailWithError:(NSError *)error;
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceAutocompleteResults:(NSArray *)placeAutocompleteResults;
 

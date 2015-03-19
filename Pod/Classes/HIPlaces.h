@@ -11,8 +11,8 @@
 #import "HIPlacesManagerDelegate.h"
 
 // Data model
-#import "HIPlacesAutocompleteRequest.h"
-#import "HIPlacesAutocompleteResult.h"
+#import "HIPlaceAutocompleteRequest.h"
+#import "HIPlaceAutocompleteResult.h"
 
 // Others
 #import "HIPlacesConstants.h"
