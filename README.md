@@ -10,16 +10,66 @@ An Objective - C wrapper for the [Google Places API][1]. The library currently i
 1. [Place Autocomplete][2]
 2. [Place Details][3]
 
+## Requirements
+
+You will need a valid Google API key which you can obtain from the [Google Developers Console][4]. Once you have a key, replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key.
+
 ## Usage
 
 ### Example
 To run the HIPlacesExample project, clone the repo, and run `pod install` from the HIPlaces directory first. Don't forget to replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key. If you don't have one then obtain one from the [Google Developers Console][4].
+![PlaceAutocomplete](http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png)
+![PlaceDetails](http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png)
 
 ### API
 
-## Requirements
+#### 1. Import HIPlaces
+``objective-c
+#import <HIPlaces/HIPlaces.h>
+``
 
-You need a valid Google API key which you can obtain from the [Google Developers Console][4]. Once you have a key, replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key.
+#### 2. Set up HIPlacesManager
+``objective-c
+HIPlacesManager *_placesManager = [[HIPlacesManager alloc] init];
+_placesManager.delegate = self;
+``
+
+#### 3. Create and perform PlaceAutocomplete or PlaceDetails requests
+``objective-c
+HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
+placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
+placeAutocompleteRequest.input = @"Paris";
+[_placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
+
+HIPlaceDetailsRequest *placeDetailsRequest = [[HIPlaceDetailsRequest alloc] init];
+placeDetailsRequest.key = @"YOUR_KEY_HERE";
+placeDetailsRequest.placeId = @"ChIJD7fiBh9u5kcRYJSMaMOCCwQ";
+[_placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
+``
+
+#### 4. Set up HIPlacesManagerDelegate protocol methods to handle results
+
+``objective-c
+- (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceAutocompleteResults:(NSArray *)placeAutocompleteResults
+{
+    # Do stuff with placeAutocompleteResults
+}
+
+- (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceAutocompleteResultsDidFailWithError:(NSError *)error
+{
+    # Handle error
+}
+
+- (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceDetailsResult:(HIPlaceDetailsResult *)placeDetailsResult
+{
+    # Do stuff with placeDetailsResult
+}
+
+- (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceDetailsResultDidFailWithError:(NSError *)error
+{
+    # Handle error
+}
+``
 
 ## Installation
 
