@@ -18,24 +18,35 @@ You will need a valid Google API key which you can obtain from the [Google Devel
 
 ### Example
 To run the HIPlacesExample project, clone the repo, and run `pod install` from the HIPlaces directory first. Don't forget to replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key. If you don't have one then obtain one from the [Google Developers Console][4].
+
+<table>
+    <tr>
+        <td>
+            <img src="http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png" width="320" alt="HIPlacesExample PlaceAutocomplete"/>
+        </td>
+        <td>
+            <img src="http://hozefaindorewala.com/images/HIPlacesExample_PlaceDetails.png" width="320" alt="HIPlacesExample PlaceDetails"/>
+        </td>
+    </tr>
+</table>
 ![PlaceAutocomplete](http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png)
-![PlaceDetails](http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png)
+![PlaceDetails](http://hozefaindorewala.com/images/HIPlacesExample_PlaceDetails.png)
 
 ### API
 
 #### 1. Import HIPlaces
-``objective-c
+```objective-c
 #import <HIPlaces/HIPlaces.h>
-``
+```
 
 #### 2. Set up HIPlacesManager
-``objective-c
+```objective-c
 HIPlacesManager *_placesManager = [[HIPlacesManager alloc] init];
 _placesManager.delegate = self;
-``
+```
 
 #### 3. Create and perform PlaceAutocomplete or PlaceDetails requests
-``objective-c
+```objective-c
 HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
 placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
 placeAutocompleteRequest.input = @"Paris";
@@ -45,11 +56,10 @@ HIPlaceDetailsRequest *placeDetailsRequest = [[HIPlaceDetailsRequest alloc] init
 placeDetailsRequest.key = @"YOUR_KEY_HERE";
 placeDetailsRequest.placeId = @"ChIJD7fiBh9u5kcRYJSMaMOCCwQ";
 [_placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
-``
+```
 
 #### 4. Set up HIPlacesManagerDelegate protocol methods to handle results
-
-``objective-c
+```objective-c
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceAutocompleteResults:(NSArray *)placeAutocompleteResults
 {
     # Do stuff with placeAutocompleteResults
@@ -69,7 +79,7 @@ placeDetailsRequest.placeId = @"ChIJD7fiBh9u5kcRYJSMaMOCCwQ";
 {
     # Handle error
 }
-``
+```
 
 ## Installation
 
