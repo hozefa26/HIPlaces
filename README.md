@@ -29,8 +29,6 @@ To run the HIPlacesExample project, clone the repo, and run `pod install` from t
         </td>
     </tr>
 </table>
-![PlaceAutocomplete](http://hozefaindorewala.com/images/HIPlacesExample_PlaceAutocomplete.png)
-![PlaceDetails](http://hozefaindorewala.com/images/HIPlacesExample_PlaceDetails.png)
 
 ### API
 
