@@ -23,15 +23,16 @@ extern NSString * const HIInvalidPlaceTypeException;
 
 extern NSString * const HIPlacesErrorDomain;
 
-extern NSUInteger const HIPlacesErrorZeroResults;
-extern NSUInteger const HIPlacesErrorOverQueryLimit;
-extern NSUInteger const HIPlacesErrorRequestDenied;
-extern NSUInteger const HIPlacesErrorInvalidRequest;
-extern NSUInteger const HIPlacesErrorNotFound;
-extern NSUInteger const HIPlacesErrorUnkownError;
-extern NSUInteger const HIPlacesErrorInvalidJSON;
-extern NSUInteger const HIPlacesErrorConnectionFailed;
-
+typedef NS_ENUM(NSUInteger, HIPlacesError){
+    HIPlacesErrorZeroResults,
+    HIPlacesErrorOverQueryLimit,
+    HIPlacesErrorRequestDenied,
+    HIPlacesErrorInvalidRequest,
+    HIPlacesErrorNotFound,
+    HIPlacesErrorUnkownError,
+    HIPlacesErrorInvalidJSON,
+    HIPlacesErrorConnectionFailed
+};
 
 ///--------------------------------------
 /// @name Enumerations

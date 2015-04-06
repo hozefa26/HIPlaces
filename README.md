@@ -12,9 +12,14 @@ An Objective - C wrapper for the [Google Places API][1]. The library currently i
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+### Example
+To run the HIPlacesExample project, clone the repo, and run `pod install` from the HIPlaces directory first. Don't forget to replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key. If you don't have one then obtain one from the [Google Developers Console][4].
+
+### API
 
 ## Requirements
+
+You need a valid Google API key which you can obtain from the [Google Developers Console][4]. Once you have a key, replace the "YOUR_KEY_HERE" string in HIPlaceAutocompleteViewController.m & HIPlaceDetailsTableViewController.m with your Google API key.
 
 ## Installation
 
@@ -35,3 +40,4 @@ HIPlaces is available under the MIT license. See the LICENSE file for more info.
 [1]: https://developers.google.com/places/documentation/
 [2]: https://developers.google.com/places/documentation/autocomplete
 [3]: https://developers.google.com/places/documentation/details
+[4]: https://console.developers.google.com

@@ -8,8 +8,9 @@
 
 #import "HIPlaceAutocompleteViewController.h"
 #import <HIPlaces/HIPlaces.h>
+#import "HIPlaceDetailsTableViewController.h"
 
-@interface HIPlaceAutocompleteViewController ()<UISearchBarDelegate, HIPlacesManagerDelegate, UITableViewDataSource>
+@interface HIPlaceAutocompleteViewController ()<UISearchBarDelegate, HIPlacesManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 {
     NSArray *_placeAutocompleteResults;
     
@@ -27,12 +28,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationItem.title = @"Place Autocomplete";
+    
     _placesManager = [[HIPlacesManager alloc] init];
     _placesManager.delegate = self;
     
     _placeSearchBar.delegate = self;
     
     _placeAutocompleteResultsTableView.dataSource = self;
+    _placeAutocompleteResultsTableView.delegate = self;
     [_placeAutocompleteResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PlaceAutocompleteResultCell"];
     
     _placeAutocompleteResults = nil;
@@ -70,7 +74,7 @@
     }
     
     HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
-    placeAutocompleteRequest.key = @"AIzaSyCSQqrrxT2egpMIObgwsise4bkLEkl_7NQ";
+    placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
     placeAutocompleteRequest.input = searchText;
     [_placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
 }
@@ -85,9 +89,18 @@
 
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceAutocompleteResultsDidFailWithError:(NSError *)error
 {
-    NSString *errorCode = [NSString stringWithFormat:@"Error Code: %ld", (long)error.code];
+    NSString *alertViewTitle;
+    switch (error.code) {
+        case HIPlacesErrorZeroResults:
+            alertViewTitle = @"No results found!";
+            break;
+            
+        default:
+            break;
+    }
+    
     UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:errorCode
+                              initWithTitle:alertViewTitle
                               message:nil
                               delegate:nil
                               cancelButtonTitle:@"OK"
@@ -95,14 +108,15 @@
     [alertView show];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - UITableViewDelegate protocol methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HIPlaceAutocompleteResult *placeAutocompleteResult = [_placeAutocompleteResults objectAtIndex:indexPath.row];
+    
+    HIPlaceDetailsTableViewController *pdtvc = [[HIPlaceDetailsTableViewController alloc] initWithPlaceId:placeAutocompleteResult.placeId];
+    
+    [self.navigationController pushViewController:pdtvc animated:YES];
 }
-*/
 
 @end

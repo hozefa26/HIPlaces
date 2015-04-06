@@ -10,4 +10,6 @@
 
 @interface HIPlaceDetailsTableViewController : UITableViewController
 
+- (id)initWithPlaceId:(NSString *)placeId;
+
 @end

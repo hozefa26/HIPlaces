@@ -10,12 +10,12 @@
 Pod::Spec.new do |s|
   s.name             = "HIPlaces"
   s.version          = "0.1.0"
-  s.summary          = "A short description of HIPlaces."
+  s.summary          = "An Objective - C wrapper for the Google Places API."
   s.description      = <<-DESC
-                       An optional longer description of HIPlaces
+                        An Objective - C wrapper for the Google Places API. The library currently includes
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                        1. Place Autocomplete
+                        2. Place Details
                        DESC
   s.homepage         = "https://github.com/hozefa26/HIPlaces"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"

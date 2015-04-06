@@ -14,11 +14,3 @@ NSString * const HIInvalidLocationException                 = @"HIInvalidLocatio
 NSString * const HIInvalidPlaceTypeException                = @"HIInvalidPlaceTypeException";
 
 NSString * const HIPlacesErrorDomain                        = @"HIPlacesErrorDomain";
-NSUInteger const HIPlacesErrorZeroResults                   = 101;
-NSUInteger const HIPlacesErrorOverQueryLimit                = 102;
-NSUInteger const HIPlacesErrorRequestDenied                 = 103;
-NSUInteger const HIPlacesErrorInvalidRequest                = 104;
-NSUInteger const HIPlacesErrorNotFound                      = 105;
-NSUInteger const HIPlacesErrorUnkownError                   = 106;
-NSUInteger const HIPlacesErrorInvalidJSON                   = 107;
-NSUInteger const HIPlacesErrorConnectionFailed              = 108;
