@@ -10,9 +10,9 @@
 
 @interface HIPlaceAutocompleteResult : NSObject
 
-@property (readonly) NSString *placeDescription;
-@property (readonly) NSString *placeId;
-@property (readonly) NSArray *placeTypes;
+@property (nonatomic, readonly) NSString *placeDescription;
+@property (nonatomic, readonly) NSString *placeId;
+@property (nonatomic, readonly) NSArray *placeTypes;
 
 - (id)initWithPlaceAutocompleteAttributes:(NSDictionary *)placeAutocompleteAttributes;
 

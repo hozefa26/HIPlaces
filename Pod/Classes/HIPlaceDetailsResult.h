@@ -11,11 +11,11 @@
 
 @interface HIPlaceDetailsResult : NSObject
 
-@property (readonly) NSString *placeId;
-@property (readonly) NSString *formattedAddress;
-@property (readonly) NSString *name;
-@property (readonly) CLLocationCoordinate2D location;
-@property (readonly) NSArray *placeTypes;
+@property (nonatomic, readonly) NSString *placeId;
+@property (nonatomic, readonly) NSString *formattedAddress;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) CLLocationCoordinate2D location;
+@property (nonatomic, readonly) NSArray *placeTypes;
 
 - (id)initWithPlaceDetailsAttributes:(NSDictionary *)placeDetailsAttributes;
 
