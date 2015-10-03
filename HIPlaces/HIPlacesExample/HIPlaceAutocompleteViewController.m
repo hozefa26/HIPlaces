@@ -15,7 +15,6 @@
 @property (strong, nonatomic) HIPlacesManager *placesManager;
 @property (strong, nonatomic) NSArray *placeAutocompleteResults;
 @property (weak, nonatomic) IBOutlet UISearchBar *placeSearchBar;
-@property (weak, nonatomic) IBOutlet UITableView *placeAutocompleteResultsTableView;
 
 @end
 
@@ -37,14 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.navigationItem.title = @"Place Autocomplete";
-    
-    _placeSearchBar.delegate = self;
-    
-    _placeAutocompleteResultsTableView.dataSource = self;
-    _placeAutocompleteResultsTableView.delegate = self;
-    [_placeAutocompleteResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PlaceAutocompleteResultCell"];
 }
 
 #pragma mark - UITableViewDataSource methods
@@ -56,7 +47,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaceAutocompleteResultCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HIPlaceAutocompleteResultCell" forIndexPath:indexPath];
     
     HIPlaceAutocompleteResult *placeAutocompleteResult = [self.placeAutocompleteResults objectAtIndex:indexPath.row];
     
@@ -84,7 +75,7 @@
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceAutocompleteResults:(NSArray *)placeAutocompleteResults
 {
     self.placeAutocompleteResults = placeAutocompleteResults;
-    [_placeAutocompleteResultsTableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceAutocompleteResultsDidFailWithError:(NSError *)error

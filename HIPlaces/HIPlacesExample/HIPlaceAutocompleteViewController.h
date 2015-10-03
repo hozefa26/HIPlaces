@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HIPlaceAutocompleteViewController : UIViewController
+@interface HIPlaceAutocompleteViewController : UITableViewController
 
 @end

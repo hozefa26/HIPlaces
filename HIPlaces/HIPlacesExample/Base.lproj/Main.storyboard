@@ -15,58 +15,69 @@
                         <animations/>
                     </navigationBar>
                     <connections>
-                        <segue destination="8R1-qM-rhh" kind="relationship" relationship="rootViewController" id="RKg-j0-nEB"/>
+                        <segue destination="cWt-dh-ODe" kind="relationship" relationship="rootViewController" id="NTt-Wg-NyB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeW-Bp-bWC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-164" y="-18"/>
         </scene>
-        <!--Place Autocomplete View Controller-->
-        <scene sceneID="Eth-qj-Rto">
+        <!--Place Autocomplete-->
+        <scene sceneID="F6p-A3-dqB">
             <objects>
-                <viewController id="8R1-qM-rhh" customClass="HIPlaceAutocompleteViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fAB-HX-zlZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="pDk-Ab-pCs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Qht-3Y-neZ">
+                <tableViewController id="cWt-dh-ODe" customClass="HIPlaceAutocompleteViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KQG-l4-6l1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="kkf-hB-cip">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <animations/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgz-VJ-fAq">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
-                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="wgz-VJ-fAq" firstAttribute="top" secondItem="kkf-hB-cip" secondAttribute="bottom" id="99q-8M-Mem"/>
-                            <constraint firstAttribute="width" secondItem="wgz-VJ-fAq" secondAttribute="width" id="LOo-gc-poV"/>
-                            <constraint firstAttribute="width" secondItem="kkf-hB-cip" secondAttribute="width" id="RLE-ce-apc"/>
-                            <constraint firstAttribute="centerX" secondItem="wgz-VJ-fAq" secondAttribute="centerX" id="StJ-sp-das"/>
-                            <constraint firstAttribute="centerX" secondItem="kkf-hB-cip" secondAttribute="centerX" id="W3f-nL-SEL"/>
-                            <constraint firstItem="pDk-Ab-pCs" firstAttribute="top" secondItem="wgz-VJ-fAq" secondAttribute="bottom" id="lUX-2d-QJC"/>
-                            <constraint firstItem="kkf-hB-cip" firstAttribute="top" secondItem="fAB-HX-zlZ" secondAttribute="bottom" id="roL-AA-6hc"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="bEa-ru-X1W"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="LoN-5M-5Dy">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="cWt-dh-ODe" id="b91-eG-0Ud"/>
+                            </connections>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HIPlaceAutocompleteResultCell" textLabel="ylw-Vd-JLz" style="IBUITableViewCellStyleDefault" id="xWl-RW-Mae">
+                                <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xWl-RW-Mae" id="T1f-cO-2vU">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ylw-Vd-JLz">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <segue destination="tlU-z5-MHv" kind="show" id="gt0-Km-Ipg"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="cWt-dh-ODe" id="BfJ-Jh-zIc"/>
+                            <outlet property="delegate" destination="cWt-dh-ODe" id="2CB-sP-NLe"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Place Autocomplete" id="v6K-Pu-w8C"/>
                     <connections>
-                        <outlet property="placeAutocompleteResultsTableView" destination="wgz-VJ-fAq" id="4BZ-zz-sQi"/>
-                        <outlet property="placeSearchBar" destination="kkf-hB-cip" id="Fwr-23-3h0"/>
-                        <segue destination="tlU-z5-MHv" kind="show" id="BVp-aJ-tH0"/>
+                        <outlet property="placeSearchBar" destination="LoN-5M-5Dy" id="McE-ed-Z2w"/>
                     </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ihb-aS-t7i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RuY-az-pre" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="690" y="-18"/>
+            <point key="canvasLocation" x="734" y="-18"/>
         </scene>
         <!--Place Details Table View Controller-->
         <scene sceneID="45Q-jN-cG1">
