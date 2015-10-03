@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HIPlaceDetailsTableViewController : UITableViewController
+@interface HIPlaceDetailsViewController : UITableViewController
 
-- (id)initWithPlaceId:(NSString *)placeId;
+@property (nonatomic, copy) NSString *placeID;
 
 @end

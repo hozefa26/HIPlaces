@@ -6,13 +6,12 @@
 //  Copyright (c) 2015 Hozefa Indorewala. All rights reserved.
 //
 
-#import "HIPlaceDetailsTableViewController.h"
+#import "HIPlaceDetailsViewController.h"
 
 #import <HIPlaces/HIPlaces.h>
 
-@interface HIPlaceDetailsTableViewController ()<HIPlacesManagerDelegate>
+@interface HIPlaceDetailsViewController ()<HIPlacesManagerDelegate>
 
-@property (nonatomic, copy) NSString *placeID;
 @property (nonatomic, strong) HIPlacesManager *placesManager;
 @property (nonatomic, strong) HIPlaceDetailsResult *placeDetailsResult;
 
@@ -23,18 +22,6 @@
 @end
 
 @implementation HIPlaceDetailsTableViewController
-
-#pragma mark - Intialization methods
-
-- (id)initWithPlaceId:(NSString *)placeId
-{
-    self = [super init];
-    if (self) {
-        _placeID = placeId;
-    }
-    
-    return self;
-}
 
 #pragma mark - Accessor methods
 
@@ -52,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Place Details";
+    self.navigationItem.title = @"";
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HIPlaceDetailCell"];
     
