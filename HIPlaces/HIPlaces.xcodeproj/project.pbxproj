@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05E3DC5C2893B3AC65C9C0D4 /* libPods-HIPlacesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDC45DCE78BD2E6941168FD /* libPods-HIPlacesExample.a */; };
-		BD189E661ABB34220083B777 /* HIPlaceDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD189E651ABB34220083B777 /* HIPlaceDetailsTableViewController.m */; };
+		BD189E661ABB34220083B777 /* HIPlaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD189E651ABB34220083B777 /* HIPlaceDetailsViewController.m */; };
 		BDD807021AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806F91AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m */; };
 		BDD807031AB71363009DD7E6 /* HIPlaceAutocompleteResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806FA1AB71363009DD7E6 /* HIPlaceAutocompleteResultTests.m */; };
 		BDD807041AB71363009DD7E6 /* HIPlaceDetailsRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806FB1AB71363009DD7E6 /* HIPlaceDetailsRequestTests.m */; };
@@ -39,8 +39,8 @@
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		7CDC45DCE78BD2E6941168FD /* libPods-HIPlacesExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HIPlacesExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B788AC868C18F78810F4AAAF /* Pods-HIPlacesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIPlacesExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HIPlacesExample/Pods-HIPlacesExample.release.xcconfig"; sourceTree = "<group>"; };
-		BD189E641ABB34220083B777 /* HIPlaceDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIPlaceDetailsTableViewController.h; sourceTree = "<group>"; };
-		BD189E651ABB34220083B777 /* HIPlaceDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPlaceDetailsTableViewController.m; sourceTree = "<group>"; };
+		BD189E641ABB34220083B777 /* HIPlaceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIPlaceDetailsViewController.h; sourceTree = "<group>"; };
+		BD189E651ABB34220083B777 /* HIPlaceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPlaceDetailsViewController.m; sourceTree = "<group>"; };
 		BDD806F01AB71325009DD7E6 /* HIPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HIPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD806F31AB71325009DD7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD806F91AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPlaceAutocompleteRequestTests.m; sourceTree = "<group>"; };
@@ -162,8 +162,8 @@
 				BDE5989F1AB70F56001D8BBF /* AppDelegate.m */,
 				BDD807091AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.h */,
 				BDD8070A1AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.m */,
-				BD189E641ABB34220083B777 /* HIPlaceDetailsTableViewController.h */,
-				BD189E651ABB34220083B777 /* HIPlaceDetailsTableViewController.m */,
+				BD189E641ABB34220083B777 /* HIPlaceDetailsViewController.h */,
+				BD189E651ABB34220083B777 /* HIPlaceDetailsViewController.m */,
 				BDE598A41AB70F56001D8BBF /* Main.storyboard */,
 				BDE598A71AB70F56001D8BBF /* Images.xcassets */,
 				BDE598A91AB70F56001D8BBF /* LaunchScreen.xib */,
@@ -373,7 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE598A01AB70F56001D8BBF /* AppDelegate.m in Sources */,
-				BD189E661ABB34220083B777 /* HIPlaceDetailsTableViewController.m in Sources */,
+				BD189E661ABB34220083B777 /* HIPlaceDetailsViewController.m in Sources */,
 				BDE5989D1AB70F56001D8BBF /* main.m in Sources */,
 				BDD8070B1AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.m in Sources */,
 			);

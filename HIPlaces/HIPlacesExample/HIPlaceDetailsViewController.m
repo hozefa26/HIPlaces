@@ -1,5 +1,5 @@
 //
-//  HIPlaceDetailsTableViewController.m
+//  HIPlaceDetailsViewController.m
 //  HIPlaces
 //
 //  Created by Hozefa Indorewala on 19/03/15.
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *placeTypesLabel;
 @end
 
-@implementation HIPlaceDetailsTableViewController
+@implementation HIPlaceDetailsViewController
 
 #pragma mark - Accessor methods
 
@@ -44,7 +44,7 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HIPlaceDetailCell"];
     
     HIPlaceDetailsRequest *placeDetailsRequest = [[HIPlaceDetailsRequest alloc] init];
-    placeDetailsRequest.key = @"YOUR_KEY_HERE";
+    placeDetailsRequest.key = @"AIzaSyCSQqrrxT2egpMIObgwsise4bkLEkl_7NQ";
     placeDetailsRequest.placeId = self.placeID;
     
     [self.placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];

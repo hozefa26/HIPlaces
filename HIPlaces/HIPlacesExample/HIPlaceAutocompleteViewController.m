@@ -8,7 +8,7 @@
 
 #import "HIPlaceAutocompleteViewController.h"
 #import <HIPlaces/HIPlaces.h>
-#import "HIPlaceDetailsTableViewController.h"
+#import "HIPlaceDetailsViewController.h"
 
 @interface HIPlaceAutocompleteViewController ()<UISearchBarDelegate, HIPlacesManagerDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -65,7 +65,7 @@
     }
     
     HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
-    placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
+    placeAutocompleteRequest.key = @"AIzaSyCSQqrrxT2egpMIObgwsise4bkLEkl_7NQ";
     placeAutocompleteRequest.input = searchText;
     [self.placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
 }
@@ -127,15 +127,19 @@
     [alertView show];
 }
 
-#pragma mark - UITableViewDelegate protocol methods
+#pragma mark - Segue methods
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    HIPlaceAutocompleteResult *placeAutocompleteResult = [self.placeAutocompleteResults objectAtIndex:indexPath.row];
-    
-    HIPlaceDetailsTableViewController *pdtvc = [[HIPlaceDetailsTableViewController alloc] initWithPlaceId:placeAutocompleteResult.placeId];
-    
-    [self.navigationController pushViewController:pdtvc animated:YES];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"ToHIPlaceDetailsViewControllerPush"]) {
+        // Get the indexPath of the row that was selected
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        // Get the corresponding HIPlaceAutocompleteResult
+        if (indexPath) {
+            HIPlaceAutocompleteResult *placeAutocompleteResult = [self.placeAutocompleteResults objectAtIndex:indexPath.row];
+            HIPlaceDetailsViewController *pdvc = segue.destinationViewController;
+            pdvc.placeID = placeAutocompleteResult.placeId;
+        }
+    }
 }
 
 #pragma mark - Others

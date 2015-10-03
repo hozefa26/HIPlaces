@@ -61,7 +61,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <segue destination="tlU-z5-MHv" kind="show" id="gt0-Km-Ipg"/>
+                                    <segue destination="tlU-z5-MHv" kind="show" identifier="ToHIPlaceDetailsViewControllerPush" id="gt0-Km-Ipg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="734" y="-18"/>
         </scene>
-        <!--Place Details Table View Controller-->
+        <!--Place Details-->
         <scene sceneID="45Q-jN-cG1">
             <objects>
-                <tableViewController id="tlU-z5-MHv" customClass="HIPlaceDetailsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="tlU-z5-MHv" customClass="HIPlaceDetailsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="L9L-VP-Um7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -191,6 +191,7 @@
                             <outlet property="delegate" destination="tlU-z5-MHv" id="qzi-FR-CYw"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Place Details" id="VfT-KB-7ys"/>
                     <connections>
                         <outlet property="formattedAddressLabel" destination="ioF-m9-JNz" id="IeH-mw-6xX"/>
                         <outlet property="locationLabel" destination="GGj-Il-ENU" id="lz0-wj-EvY"/>

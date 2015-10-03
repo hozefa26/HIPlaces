@@ -1,5 +1,5 @@
 //
-//  HIPlaceDetailsTableViewController.h
+//  HIPlaceDetailsViewController.h
 //  HIPlaces
 //
 //  Created by Hozefa Indorewala on 19/03/15.
