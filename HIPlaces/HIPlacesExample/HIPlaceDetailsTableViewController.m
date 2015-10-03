@@ -11,16 +11,16 @@
 #import <HIPlaces/HIPlaces.h>
 
 @interface HIPlaceDetailsTableViewController ()<HIPlacesManagerDelegate>
-{
-    NSString *_placeID;
-    
-    HIPlacesManager *_placesManager;
-    
-    HIPlaceDetailsResult *_placeDetailsResult;
-}
+
+@property (nonatomic, copy) NSString *placeID;
+@property (nonatomic, strong) HIPlacesManager *placesManager;
+@property (nonatomic, strong) HIPlaceDetailsResult *placeDetailsResult;
+
 @end
 
 @implementation HIPlaceDetailsTableViewController
+
+#pragma mark - Intialization methods
 
 - (id)initWithPlaceId:(NSString *)placeId
 {
@@ -32,6 +32,19 @@
     return self;
 }
 
+#pragma mark - Accessor methods
+
+- (HIPlacesManager *)placesManager {
+    if (!_placesManager) {
+        _placesManager = [[HIPlacesManager alloc] init];
+        _placesManager.delegate = self;
+    }
+    
+    return _placesManager;
+}
+
+#pragma mark - View methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -39,19 +52,11 @@
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HIPlaceDetailCell"];
     
-    _placesManager = [[HIPlacesManager alloc] init];
-    _placesManager.delegate = self;
-    
     HIPlaceDetailsRequest *placeDetailsRequest = [[HIPlaceDetailsRequest alloc] init];
     placeDetailsRequest.key = @"YOUR_KEY_HERE";
-    placeDetailsRequest.placeId = _placeID;
+    placeDetailsRequest.placeId = self.placeID;
     
-    [_placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
 }
 
 #pragma mark - Table view data source
@@ -69,27 +74,27 @@
     switch (indexPath.row) {
         case 0:
         {
-            cell.textLabel.text = _placeDetailsResult.name;
+            cell.textLabel.text = self.placeDetailsResult.name;
         }
             break;
             
         case 1:
         {
-            cell.textLabel.text = _placeDetailsResult.formattedAddress;
+            cell.textLabel.text = self.placeDetailsResult.formattedAddress;
         }
             break;
             
         case 2:
         {
-            cell.textLabel.text = [NSString stringWithFormat:@"%f, %f", _placeDetailsResult.location.latitude, _placeDetailsResult.location.longitude];
+            cell.textLabel.text = [NSString stringWithFormat:@"%f, %f", self.placeDetailsResult.location.latitude, self.placeDetailsResult.location.longitude];
         }
             break;
             
         case 3:
         {
             NSMutableString *placeTypesString = [[NSMutableString alloc] initWithString:@""];
-            for (int i = 0; i < _placeDetailsResult.placeTypes.count; i++) {
-                HIPlaceType placeType = [[_placeDetailsResult.placeTypes objectAtIndex:i] unsignedIntegerValue];
+            for (int i = 0; i < self.placeDetailsResult.placeTypes.count; i++) {
+                HIPlaceType placeType = [[self.placeDetailsResult.placeTypes objectAtIndex:i] unsignedIntegerValue];
                 [placeTypesString appendString:[HIPlaceTypes placeTypeStringForPlaceType:placeType]];
                 [placeTypesString appendString:@" "];
             }
@@ -108,7 +113,7 @@
 
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceDetailsResult:(HIPlaceDetailsResult *)placeDetailsResult
 {
-    _placeDetailsResult = placeDetailsResult;
+    self.placeDetailsResult = placeDetailsResult;
     [self.tableView reloadData];
 }
 
@@ -159,6 +164,13 @@
                               cancelButtonTitle:@"OK"
                               otherButtonTitles:nil];
     [alertView show];
+}
+
+#pragma mark - Others
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -11,12 +11,9 @@
 #import "HIPlaceDetailsTableViewController.h"
 
 @interface HIPlaceAutocompleteViewController ()<UISearchBarDelegate, HIPlacesManagerDelegate, UITableViewDataSource, UITableViewDelegate>
-{
-    NSArray *_placeAutocompleteResults;
-    
-    HIPlacesManager *_placesManager;
-}
 
+@property (strong, nonatomic) HIPlacesManager *placesManager;
+@property (strong, nonatomic) NSArray *placeAutocompleteResults;
 @property (weak, nonatomic) IBOutlet UISearchBar *placeSearchBar;
 @property (weak, nonatomic) IBOutlet UITableView *placeAutocompleteResultsTableView;
 
@@ -24,41 +21,44 @@
 
 @implementation HIPlaceAutocompleteViewController
 
+#pragma mark - Accessor methods
+
+- (HIPlacesManager *)placesManager {
+    if (!_placesManager) {
+        _placesManager = [[HIPlacesManager alloc] init];
+        _placesManager.delegate = self;
+    }
+    
+    return _placesManager;
+}
+
+#pragma mark - View methods
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"Place Autocomplete";
     
-    _placesManager = [[HIPlacesManager alloc] init];
-    _placesManager.delegate = self;
-    
     _placeSearchBar.delegate = self;
     
     _placeAutocompleteResultsTableView.dataSource = self;
     _placeAutocompleteResultsTableView.delegate = self;
     [_placeAutocompleteResultsTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PlaceAutocompleteResultCell"];
-    
-    _placeAutocompleteResults = nil;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [_placeAutocompleteResults count];
+    return [self.placeAutocompleteResults count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlaceAutocompleteResultCell" forIndexPath:indexPath];
     
-    HIPlaceAutocompleteResult *placeAutocompleteResult = [_placeAutocompleteResults objectAtIndex:indexPath.row];
+    HIPlaceAutocompleteResult *placeAutocompleteResult = [self.placeAutocompleteResults objectAtIndex:indexPath.row];
     
     cell.textLabel.text = placeAutocompleteResult.placeDescription;
     
@@ -76,14 +76,14 @@
     HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
     placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
     placeAutocompleteRequest.input = searchText;
-    [_placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
+    [self.placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
 }
 
 #pragma mark - HIPlacesManagerDelegate protocol methods
 
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceAutocompleteResults:(NSArray *)placeAutocompleteResults
 {
-    _placeAutocompleteResults = placeAutocompleteResults;
+    self.placeAutocompleteResults = placeAutocompleteResults;
     [_placeAutocompleteResultsTableView reloadData];
 }
 
@@ -140,11 +140,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HIPlaceAutocompleteResult *placeAutocompleteResult = [_placeAutocompleteResults objectAtIndex:indexPath.row];
+    HIPlaceAutocompleteResult *placeAutocompleteResult = [self.placeAutocompleteResults objectAtIndex:indexPath.row];
     
     HIPlaceDetailsTableViewController *pdtvc = [[HIPlaceDetailsTableViewController alloc] initWithPlaceId:placeAutocompleteResult.placeId];
     
     [self.navigationController pushViewController:pdtvc animated:YES];
+}
+
+#pragma mark - Others
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
