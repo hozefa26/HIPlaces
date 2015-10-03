@@ -44,63 +44,11 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"HIPlaceDetailCell"];
     
     HIPlaceDetailsRequest *placeDetailsRequest = [[HIPlaceDetailsRequest alloc] init];
-    placeDetailsRequest.key = @"AIzaSyCSQqrrxT2egpMIObgwsise4bkLEkl_7NQ";
+    placeDetailsRequest.key = @"YOUR_KEY_HERE";
     placeDetailsRequest.placeId = self.placeID;
     
     [self.placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
 }
-/*
-
-#pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 4;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HIPlaceDetailCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    switch (indexPath.row) {
-        case 0:
-        {
-            cell.textLabel.text = self.placeDetailsResult.name;
-        }
-            break;
-            
-        case 1:
-        {
-            cell.textLabel.text = self.placeDetailsResult.formattedAddress;
-        }
-            break;
-            
-        case 2:
-        {
-            cell.textLabel.text = [NSString stringWithFormat:@"%f, %f", self.placeDetailsResult.location.latitude, self.placeDetailsResult.location.longitude];
-        }
-            break;
-            
-        case 3:
-        {
-            NSMutableString *placeTypesString = [[NSMutableString alloc] initWithString:@""];
-            for (int i = 0; i < self.placeDetailsResult.placeTypes.count; i++) {
-                HIPlaceType placeType = [[self.placeDetailsResult.placeTypes objectAtIndex:i] unsignedIntegerValue];
-                [placeTypesString appendString:[HIPlaceTypes placeTypeStringForPlaceType:placeType]];
-                [placeTypesString appendString:@" "];
-            }
-            cell.textLabel.text = placeTypesString;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return cell;
-}
- */
 
 #pragma mark - HIPlacesManagerDelegate protocol methods
 

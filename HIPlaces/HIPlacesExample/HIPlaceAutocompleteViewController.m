@@ -65,7 +65,7 @@
     }
     
     HIPlaceAutocompleteRequest *placeAutocompleteRequest = [[HIPlaceAutocompleteRequest alloc] init];
-    placeAutocompleteRequest.key = @"AIzaSyCSQqrrxT2egpMIObgwsise4bkLEkl_7NQ";
+    placeAutocompleteRequest.key = @"YOUR_KEY_HERE";
     placeAutocompleteRequest.input = searchText;
     [self.placesManager searchForPlaceAutocompleteResultsWithRequest:placeAutocompleteRequest];
 }
