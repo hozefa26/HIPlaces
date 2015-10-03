@@ -16,6 +16,10 @@
 @property (nonatomic, strong) HIPlacesManager *placesManager;
 @property (nonatomic, strong) HIPlaceDetailsResult *placeDetailsResult;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *formattedAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *placeTypesLabel;
 @end
 
 @implementation HIPlaceDetailsTableViewController
@@ -58,6 +62,7 @@
     
     [self.placesManager searchForPlaceDetailsResultWithRequest:placeDetailsRequest];
 }
+/*
 
 #pragma mark - Table view data source
 
@@ -108,13 +113,26 @@
     
     return cell;
 }
+ */
 
 #pragma mark - HIPlacesManagerDelegate protocol methods
 
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceDetailsResult:(HIPlaceDetailsResult *)placeDetailsResult
 {
-    self.placeDetailsResult = placeDetailsResult;
-    [self.tableView reloadData];
+    // self.placeDetailsResult = placeDetailsResult;
+    // [self.tableView reloadData];
+    
+    self.nameLabel.text = placeDetailsResult.name;
+    self.formattedAddressLabel.text = placeDetailsResult.formattedAddress;
+    self.locationLabel.text = [NSString stringWithFormat:@"%f, %f", placeDetailsResult.location.latitude, placeDetailsResult.location.longitude];
+    
+    NSMutableString *placeTypesString = [[NSMutableString alloc] initWithString:@""];
+    for (int i = 0; i < placeDetailsResult.placeTypes.count; i++) {
+        HIPlaceType placeType = [[placeDetailsResult.placeTypes objectAtIndex:i] unsignedIntegerValue];
+        [placeTypesString appendString:[HIPlaceTypes placeTypeStringForPlaceType:placeType]];
+        [placeTypesString appendString:@" "];
+    }
+    self.placeTypesLabel.text = placeTypesString;
 }
 
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceDetailsResultDidFailWithError:(NSError *)error
