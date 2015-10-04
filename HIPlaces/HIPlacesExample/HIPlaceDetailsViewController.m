@@ -53,10 +53,7 @@
 #pragma mark - HIPlacesManagerDelegate protocol methods
 
 - (void)placesManager:(HIPlacesManager *)placesManager didSearchForPlaceDetailsResult:(HIPlaceDetailsResult *)placeDetailsResult
-{
-    // self.placeDetailsResult = placeDetailsResult;
-    // [self.tableView reloadData];
-    
+{    
     self.nameLabel.text = placeDetailsResult.name;
     self.formattedAddressLabel.text = placeDetailsResult.formattedAddress;
     self.locationLabel.text = [NSString stringWithFormat:@"%f, %f", placeDetailsResult.location.latitude, placeDetailsResult.location.longitude];
