@@ -48,3 +48,9 @@ typedef NS_ENUM(NSUInteger, HIGoogleStatusCode){
     HIGoogleStatusCodeNotFound
 };
 
+///--------------------------------------
+/// @name Base URLs
+///--------------------------------------
+
+extern NSString * const HIPlaceAutocompleteBaseURL;
+extern NSString * const HIPlaceDetailsBaseURL;

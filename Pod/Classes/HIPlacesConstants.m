@@ -14,3 +14,6 @@ NSString * const HIInvalidLocationException                 = @"HIInvalidLocatio
 NSString * const HIInvalidPlaceTypeException                = @"HIInvalidPlaceTypeException";
 
 NSString * const HIPlacesErrorDomain                        = @"HIPlacesErrorDomain";
+
+NSString * const HIPlaceAutocompleteBaseURL                 = @"https://maps.googleapis.com/maps/api/place/autocomplete/json?";
+NSString * const HIPlaceDetailsBaseURL                      = @"https://maps.googleapis.com/maps/api/place/details/json?";

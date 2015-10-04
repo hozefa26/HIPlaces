@@ -126,7 +126,7 @@
 
 - (NSString *)placeAutocompleteRequestURLStringFromRequest:(HIPlaceAutocompleteRequest *)request
 {
-    NSMutableString *requestURLString = [NSMutableString stringWithString:@"https://maps.googleapis.com/maps/api/place/autocomplete/json?"];
+    NSMutableString *requestURLString = [NSMutableString stringWithString:HIPlaceAutocompleteBaseURL];
     
     request.input = [request.input stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
@@ -174,7 +174,7 @@
 
 - (NSString *)placeDetailsRequestURLStringFromRequest:(HIPlaceDetailsRequest *)request
 {
-    NSMutableString *requestURLString = [NSMutableString stringWithString:@"https://maps.googleapis.com/maps/api/place/details/json?"];
+    NSMutableString *requestURLString = [NSMutableString stringWithString:HIPlaceDetailsBaseURL];
     
     [requestURLString appendFormat:@"key=%@&placeid=%@", request.key, request.placeId];
     
