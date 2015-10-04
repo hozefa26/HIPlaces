@@ -169,7 +169,7 @@
         }
     }
         
-    return [requestURLString copy];
+    return [NSString stringWithString:requestURLString];
 }
 
 - (NSString *)placeDetailsRequestURLStringFromRequest:(HIPlaceDetailsRequest *)request
@@ -178,7 +178,7 @@
     
     [requestURLString appendFormat:@"key=%@&placeid=%@", request.key, request.placeId];
     
-    return [requestURLString copy];
+    return [NSString stringWithString:requestURLString];
 }
 
 - (HIGoogleStatusCode)statusCodeForResponse:(NSDictionary *)responseDictionary
@@ -240,7 +240,7 @@
         [placeAutocompleteResults addObject:placeAutocompleteResult];
     }
     
-    return [placeAutocompleteResults copy];
+    return [NSArray arrayWithArray:placeAutocompleteResults];
 }
 
 - (HIPlaceDetailsResult *)placeDetailsResultForResponse:(NSDictionary *)responseDictionary
