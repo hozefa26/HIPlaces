@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		05E3DC5C2893B3AC65C9C0D4 /* libPods-HIPlacesExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CDC45DCE78BD2E6941168FD /* libPods-HIPlacesExample.a */; };
 		BD189E661ABB34220083B777 /* HIPlaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD189E651ABB34220083B777 /* HIPlaceDetailsViewController.m */; };
+		BD534EBB1BC1A262004719B6 /* UIViewController+AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BD534EBA1BC1A262004719B6 /* UIViewController+AlertView.m */; settings = {ASSET_TAGS = (); }; };
 		BDD807021AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806F91AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m */; };
 		BDD807031AB71363009DD7E6 /* HIPlaceAutocompleteResultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806FA1AB71363009DD7E6 /* HIPlaceAutocompleteResultTests.m */; };
 		BDD807041AB71363009DD7E6 /* HIPlaceDetailsRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BDD806FB1AB71363009DD7E6 /* HIPlaceDetailsRequestTests.m */; };
@@ -41,6 +42,8 @@
 		B788AC868C18F78810F4AAAF /* Pods-HIPlacesExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HIPlacesExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-HIPlacesExample/Pods-HIPlacesExample.release.xcconfig"; sourceTree = "<group>"; };
 		BD189E641ABB34220083B777 /* HIPlaceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HIPlaceDetailsViewController.h; sourceTree = "<group>"; };
 		BD189E651ABB34220083B777 /* HIPlaceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPlaceDetailsViewController.m; sourceTree = "<group>"; };
+		BD534EB91BC1A262004719B6 /* UIViewController+AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AlertView.h"; sourceTree = "<group>"; };
+		BD534EBA1BC1A262004719B6 /* UIViewController+AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AlertView.m"; sourceTree = "<group>"; };
 		BDD806F01AB71325009DD7E6 /* HIPlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HIPlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDD806F31AB71325009DD7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDD806F91AB71363009DD7E6 /* HIPlaceAutocompleteRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HIPlaceAutocompleteRequestTests.m; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 			children = (
 				BDE5989E1AB70F56001D8BBF /* AppDelegate.h */,
 				BDE5989F1AB70F56001D8BBF /* AppDelegate.m */,
+				BD534EB91BC1A262004719B6 /* UIViewController+AlertView.h */,
+				BD534EBA1BC1A262004719B6 /* UIViewController+AlertView.m */,
 				BDD807091AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.h */,
 				BDD8070A1AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.m */,
 				BD189E641ABB34220083B777 /* HIPlaceDetailsViewController.h */,
@@ -373,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDE598A01AB70F56001D8BBF /* AppDelegate.m in Sources */,
+				BD534EBB1BC1A262004719B6 /* UIViewController+AlertView.m in Sources */,
 				BD189E661ABB34220083B777 /* HIPlaceDetailsViewController.m in Sources */,
 				BDE5989D1AB70F56001D8BBF /* main.m in Sources */,
 				BDD8070B1AB71D58009DD7E6 /* HIPlaceAutocompleteViewController.m in Sources */,

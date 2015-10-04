@@ -7,8 +7,8 @@
 //
 
 #import "HIPlaceDetailsViewController.h"
-
 #import <HIPlaces/HIPlaces.h>
+#import "UIViewController+AlertView.h"
 
 @interface HIPlaceDetailsViewController ()<HIPlacesManagerDelegate>
 
@@ -67,51 +67,7 @@
 
 - (void)placesManager:(HIPlacesManager *)placesManager searchForPlaceDetailsResultDidFailWithError:(NSError *)error
 {
-    NSString *alertViewTitle;
-    switch (error.code) {
-        case HIPlacesErrorZeroResults:
-            alertViewTitle = @"No results found!";
-            break;
-            
-        case HIPlacesErrorOverQueryLimit:
-            alertViewTitle = @"Over query limit!";
-            break;
-            
-        case HIPlacesErrorRequestDenied:
-            alertViewTitle = @"Request denied!";
-            break;
-            
-        case HIPlacesErrorInvalidRequest:
-            alertViewTitle = @"Invalid request!";
-            break;
-            
-        case HIPlacesErrorNotFound:
-            alertViewTitle = @"Not found!";
-            break;
-            
-        case HIPlacesErrorUnkownError:
-            alertViewTitle = @"Unknown error!";
-            break;
-            
-        case HIPlacesErrorInvalidJSON:
-            alertViewTitle = @"Invalid JSON!";
-            break;
-            
-        case HIPlacesErrorConnectionFailed:
-            alertViewTitle = @"Connection failed!";
-            break;
-            
-        default:
-            break;
-    }
-    
-    UIAlertView *alertView = [[UIAlertView alloc]
-                              initWithTitle:alertViewTitle
-                              message:nil
-                              delegate:nil
-                              cancelButtonTitle:@"OK"
-                              otherButtonTitles:nil];
-    [alertView show];
+    [self displayAlertViewForError:error.code];
 }
 
 #pragma mark - Others
